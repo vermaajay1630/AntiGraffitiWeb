@@ -1,0 +1,19 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden !important;
+    background-color: beige;
+}
+
+#container_1{
+    justify-content: center;
+    display: flex;
+}
+
+.card{
+    margin-top: 20px;
+}
+.card-text{
+    padding: 10px;
+    
+}

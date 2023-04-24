@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <section id="one">
+        
+    </section>
+
+<script>
+    var section  = document.getElementById("one"); 
+    const firebaseConfig = {
+  apiKey: "AIzaSyA3GMIpKQSKA3EwhMcX9HzN0Ez8yaDUELc",
+  authDomain: "antigraffiti-ab5ea.firebaseapp.com",
+  databaseURL: "https://antigraffiti-ab5ea-default-rtdb.firebaseio.com",
+  projectId: "antigraffiti-ab5ea",
+  storageBucket: "antigraffiti-ab5ea.appspot.com",
+  messagingSenderId: "711598424424",
+  appId: "1:711598424424:web:7a75b89734567ff79b16dd",
+  measurementId: "G-07WB68CRTF"
+};
+
+firebase.initializeApp(firebaseConfig);
+var firebaseRef = firebase.database().ref("graffitiDetails");
+firebaseRef.once("value", function(snapshot){
+    const data = snapshot.val();
+    let html = '';
+    Object.values(data).forEach((element) => {
+            html += `
+            <div class="container">
+                <div id="container_1">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="${element.imageUrl}" alt="Card image cap">
+                <p class="card-text"><span style="font-weight: bold;">Address:</span> ${element.address}</p>
+            </div>
+            </div>
+        </div>
+        `
+        section.innerHTML = html;
+    });
+})
+
+    </script>
+</body>
+</html>
